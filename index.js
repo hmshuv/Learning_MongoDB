@@ -1,47 +1,47 @@
-const express = required("express");
+const express = require("express");
 const app = express();
-const mongoose = required("mongoose");
+const mongoose = require("mongoose");
 
 
 //schema
 
 const studentSchema = new mongoose.Schema({
     name: {
-        type: string,
+        type: String,
         unique: false,
         required: true,
     },
     middlename: {
-        type:string,
+        type: String,
         required: false,
         unique: false,
     },
     lastname: {
-        type: string,
+        type: String,
         required: true,
         unique: false,
     },
     rollno: {
-        type: integer,
+        type: String,
         required: true,
         unique: true,
     },
     email: {
-        type: string,
+        type: String,
         required: true,
         unique: true,
     },
     DOB: {
-        type: Character,
+        type: String,
         required: true,
         unique: true,
     },
     address: {
-        type: string,
+        type: String,
         required: true,
         unique: false,
     },
-});
+}); 
 
 
 // model
