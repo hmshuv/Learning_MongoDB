@@ -2,11 +2,11 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 
-
+app.use(express.urlencoded({ extended: false }));
 //schema
 
 const studentSchema = new mongoose.Schema({
-    name: {
+    firstname: {
         type: String,
         unique: false,
         required: true,
@@ -52,12 +52,13 @@ mongoose.connect("mongodb://127.0.0.1:27017/students-details")
 .then(()=> console.log("MongoDB connected!"))
 .catch((err)=> console.log("Mongo Error", err));
 
+
+
 //routing
-
-
 
 app.post("/student-details", async(req, res)=>{
     const body = req.body;
+    console.log(body , 1);
     if(
      !body||
      !body.first_name||
@@ -67,9 +68,10 @@ app.post("/student-details", async(req, res)=>{
      !body.email||
      !body.DOB||
      !body.address
-
-    ){
+     ){
+        console.log(body);
         res.status(400).json({msg:"All fields are req..."})
+        return;
     }
     const result = await Student.create({
         firstname: body.first_name,
