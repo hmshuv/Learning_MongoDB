@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 //schema
 
 const studentSchema = new mongoose.Schema({
